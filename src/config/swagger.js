@@ -1,5 +1,5 @@
 const swaggerJsdoc = require('swagger-jsdoc');
-const swaggerUi = require('swagger-ui-express');
+const path = require('path'); // ADICIONE ESTA LINHA
 
 const options = {
   definition: {
@@ -38,9 +38,9 @@ const options = {
       }
     ]
   },
-  apis: ['./routes/*.js', './controllers/*.js']
+  // CORRIJA ESTE CAMINHO:
+  apis: [path.join(__dirname, '../routes/*.js')] // Use caminho absoluto
 };
 
 const swaggerSpec = swaggerJsdoc(options);
-
-module.exports = { swaggerUi, swaggerSpec };
+module.exports = swaggerSpec
